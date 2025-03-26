@@ -6,7 +6,7 @@ from fastapi import FastAPI
 from src.infrastructure.database.db_helper import db_helper
 from src.infrastructure.database.models.base import Base
 
-from src.api.v1.url import router as url_router
+from src.api import router_v1
 
 
 @asynccontextmanager
@@ -20,7 +20,7 @@ async def lifespan(_app: FastAPI):
 
 
 app = FastAPI(title='URL-Shortener', lifespan=lifespan)
-app.include_router(router=url_router)
+app.include_router(router=router_v1)
 
 if __name__ == '__main__':
     uvicorn.run(app)
