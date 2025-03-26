@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Depends, Request
+from fastapi.responses import RedirectResponse
 from pydantic import HttpUrl
 
 from src.domain.entities.url import Url
@@ -31,10 +32,11 @@ async def get_url_by_id(
     return await service.get_by_id(get_url)
 
 
-@router.get('/{short_url}', response_model=Url)
+@router.get('/{short_url}', response_class=RedirectResponse)
 async def get_url_by_short_url(
         short_url: str,
         service: UrlService = Depends(get_url_service)
 ):
     get_url = GetByShortUrlDTO(short_url=short_url)
-    return await service.get_by_short_url(get_url)
+    url = await service.get_by_short_url(get_url)
+    return RedirectResponse(url.url)
