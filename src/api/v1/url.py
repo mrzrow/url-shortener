@@ -2,8 +2,7 @@ from fastapi import APIRouter, Depends, Request
 from pydantic import HttpUrl
 
 from src.domain.entities.url import Url
-from src.domain.repositories.dto.url import CreateUrlDTO, GetByIdUrlDTO, GetByShortUrlDTO, CreateUrlWithBaseDTO, \
-    GetShortUrlDTO
+from src.domain.repositories.dto.url import CreateUrlDTO, GetByIdUrlDTO, GetByShortUrlDTO, GetShortUrlDTO
 from src.domain.services.url import UrlService
 from src.infrastructure.depends import get_url_service
 
