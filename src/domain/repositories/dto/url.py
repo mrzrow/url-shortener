@@ -1,8 +1,8 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, HttpUrl
 
 
 class CreateUrlDTO(BaseModel):
-    url: str
+    url: HttpUrl
 
 
 class GetByIdUrlDTO(BaseModel):
@@ -10,4 +10,4 @@ class GetByIdUrlDTO(BaseModel):
 
 
 class GetByShortUrlDTO(BaseModel):
-    short_url: str
+    short_url: HttpUrl

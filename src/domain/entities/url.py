@@ -1,7 +1,7 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, HttpUrl
 
 
 class Url(BaseModel):
     id: int | None = None
-    url: str
-    short_url: str
+    url: HttpUrl
+    short_url: HttpUrl
