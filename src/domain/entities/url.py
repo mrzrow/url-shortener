@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 
 
-class ULR(BaseModel):
-    id: int
+class Url(BaseModel):
+    id: int | None = None
     url: str
     short_url: str

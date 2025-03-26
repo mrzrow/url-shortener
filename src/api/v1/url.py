@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends
 
-from src.domain.repositories.dto.url import CreateUrlDTO, GetByIdUrlDTO, UrlDTO, GetByShortUrlDTO
+from src.domain.entities.url import Url
+from src.domain.repositories.dto.url import CreateUrlDTO, GetByIdUrlDTO, GetByShortUrlDTO
 from src.domain.services.url import UrlService
 from src.infrastructure.depends import get_url_service
 
@@ -15,7 +16,7 @@ async def create_url(
     return await service.create(url_in)
 
 
-@router.get('/id/{url_id}', response_model=UrlDTO)
+@router.get('/id/{url_id}', response_model=Url)
 async def get_url_by_id(
         url_id: int,
         service: UrlService = Depends(get_url_service)
@@ -24,7 +25,7 @@ async def get_url_by_id(
     return await service.get_by_id(get_url)
 
 
-@router.get('/{short_url}', response_model=UrlDTO)
+@router.get('/{short_url}', response_model=Url)
 async def get_url_by_short_url(
         short_url: str,
         service: UrlService = Depends(get_url_service)
