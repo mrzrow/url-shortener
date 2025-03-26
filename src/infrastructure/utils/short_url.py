@@ -1,5 +1,4 @@
 import random
-
 from string import ascii_letters, digits
 
 
