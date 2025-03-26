@@ -1,5 +1,5 @@
 from src.domain.entities.url import Url
-from src.domain.repositories.dto.url import CreateUrlDTO, GetByIdUrlDTO, GetByShortUrlDTO
+from src.domain.repositories.dto.url import GetByIdUrlDTO, GetByShortUrlDTO, CreateUrlDTO
 from src.domain.repositories.url import UrlRepository
 from src.infrastructure.utils.short_url import create_short_url
 
@@ -10,9 +10,8 @@ class UrlService:
 
     async def create(self, create_url: CreateUrlDTO) -> Url:
         short_url = create_short_url()
-        url_dump = create_url.model_dump()
         url = Url(
-            **url_dump,
+            url=str(create_url.url),
             short_url=short_url
         )
         result = await self.repository.create(url)
