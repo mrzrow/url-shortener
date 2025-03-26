@@ -5,11 +5,6 @@ class CreateUrlDTO(BaseModel):
     url: HttpUrl
 
 
-class CreateUrlWithBaseDTO(BaseModel):
-    url: HttpUrl
-    base: HttpUrl
-
-
 class GetShortUrlDTO(BaseModel):
     short_url: HttpUrl
 
