@@ -9,7 +9,7 @@ BASE = Path(__file__).parent.parent.parent
 
 
 class DatabaseSettings(BaseModel):
-    url: str = os.environ.get('DB_PATH').format(BASE)
+    url: str = os.environ.get('DB_PATH')
     echo: bool = bool(int(os.environ.get('DB_ECHO')))
 
 
