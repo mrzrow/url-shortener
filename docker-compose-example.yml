@@ -11,9 +11,9 @@ services:
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: url-db
+      POSTGRES_USER: [username]
+      POSTGRES_PASSWORD: [password]
+      POSTGRES_DB: [db-name]
     volumes:
       - postgres_data:/var/lib/postgresql/data
     networks:
@@ -28,7 +28,7 @@ services:
     depends_on:
       - db
     environment:
-      DB_PATH: postgresql+asyncpg://admin:password@db:5432/url-db
+      DB_PATH: postgresql+asyncpg://[username]:[password]@db:5432/[db-name]
       DB_ECHO: 1
       API_PATH: /v1
     networks:
